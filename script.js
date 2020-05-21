@@ -13,21 +13,21 @@ fetch('https://api.github.com/users/Zhenyapechenya')
         body.append(photo);
         
         let name = document.createElement('p');
-        name.innerHTML = json.nme;
+        if (json.name != null) {
+            name.innerHTML = json.name;    
+        } else {
+            name.innerHTML = 'Информация о пользователе недоступна';
+        }
         body.append(name);
-
+   
         let bio = document.createElement('p');
         bio.classList.add('link');
-        bio.innerHTML = json.bio;
+        if (json.bio != null) {
+            bio.innerHTML = json.bio;    
+        } else {
+            bio.innerHTML = 'Информация о пользователе недоступна';
+        }
         body.append(bio);
-        bio.addEventListener("click", () => window.location = json.html_url);
-
-            if (json.avatar_url == null) {
-                photo.innerHTML = 'Информация о пользователе не доступна';
-            }
-
-            if (json.name === null) {
-                name.innerHTML = 'Информация о пользователе не доступна';
-            }
+        bio.addEventListener("click", () => window.location = json.html_url);       
     })
-    .catch(err => alert(err));
+    .catch(err => alert('Информация о пользователе недоступна'));
