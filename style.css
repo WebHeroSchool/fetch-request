@@ -1,0 +1,11 @@
+body {
+    text-align: center;
+}
+
+.link {
+    text-decoration: underline;
+}
+
+.link:hover {
+    cursor: pointer;
+}
