@@ -1,6 +1,12 @@
 let body = document.body;
+let string = window.location.search;
+let userName = string.slice(string.indexOf('=')+1);
+let url = 'https://api.github.com/users/Zhenyapechenya';
+if (string !== '') {
+    url = `https://api.github.com/users/${userName}`;
+}
 
-fetch('https://api.github.com/users/Zhenyapechenya')
+fetch(url)
     .then(res => res.json())
     .then(json => {
         console.log(json.avatar_url);
